@@ -2,7 +2,7 @@
     "name": "C-13X",
     "vendorId": "0xB16B",
     "productId": "0x0130",
-    "lighting": "none",
+    "lighting": "qmk_rgblight",
     "matrix": {"rows": 4, "cols": 10},
 
     "layouts": {
