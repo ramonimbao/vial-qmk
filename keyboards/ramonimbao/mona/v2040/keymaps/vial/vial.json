@@ -1,8 +1,8 @@
 {
 	"name": "Mona",
 	"vendorId": "0xB16B",
-	"productId": "0x2040",
-	"lighting": "none",
+	"productId": "0x2041",
+	"lighting": "qmk_rgblight",
 	"matrix": { "rows": 5, "cols": 15 },
 	"layouts": {
 		"keymap":
