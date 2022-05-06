@@ -15,3 +15,32 @@
  */
 
 #include "tkl_ff_v2040.h"
+
+#ifdef RGBLIGHT_ENABLE
+const rgblight_segment_t PROGMEM ll_cl[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 1, HSV_OFF}
+);
+
+const rgblight_segment_t PROGMEM ll_sl[] = RGBLIGHT_LAYER_SEGMENTS(
+    {1, 1, HSV_OFF}
+);
+
+const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(ll_cl, ll_sl);
+
+void keyboard_post_init_kb(void) {
+    rgblight_layers = rgb_layers;
+
+    keyboard_post_init_user();
+}
+
+bool led_update_kb(led_t led_state) {
+    bool res = led_update_user(led_state);
+
+    if (res) {
+        rgblight_set_layer_state(0, !led_state.caps_lock);
+        rgblight_set_layer_state(1, !led_state.scroll_lock);
+    }
+
+    return res;
+}
+#endif
