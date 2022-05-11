@@ -21,41 +21,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
-#ifdef RGBLIGHT_ENABLE
-const rgblight_segment_t PROGMEM ll_none[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_OFF},
-    {1, 1, HSV_OFF}
-);
+#ifdef RGB_MATRIX_ENABLE
+led_config_t g_led_config = {{
+    // Key Matrix to LED Index
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED,      1, NO_LED },
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
+    { NO_LED, NO_LED,      0, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED }
+}, {
+    // LED Index to Position
+    { 26, 33 }, { 188, 0 },
+}, {
+    // LED Index to Flags
+    LED_FLAG_INDICATOR, LED_FLAG_INDICATOR
+}};
 
-const rgblight_segment_t PROGMEM ll_cl[] = RGBLIGHT_LAYER_SEGMENTS(
-    {1, 1, HSV_OFF}
-);
-
-const rgblight_segment_t PROGMEM ll_sl[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_OFF}
-);
-
-const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(ll_none, ll_cl, ll_sl);
-
-void keyboard_post_init_kb(void) {
-    rgblight_layers = rgb_layers;
-
-    keyboard_post_init_user();
-}
-
-bool led_update_kb(led_t led_state) {
-    bool res = led_update_user(led_state);
-
-    if (res) {
-        uint8_t lock_bits = led_state.scroll_lock << 1 | led_state.caps_lock;
-        for (uint8_t i=0; i<3; i++) {
-            rgblight_set_layer_state(i, false);
-        }
-        if (lock_bits < 3) {
-            rgblight_set_layer_state(lock_bits, true);
-        }
+void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    if (!host_keyboard_led_state().caps_lock) {
+        RGB_MATRIX_INDICATOR_SET_COLOR(0, 0, 0, 0);
     }
-
-    return res;
+    if (!host_keyboard_led_state().scroll_lock) {
+        RGB_MATRIX_INDICATOR_SET_COLOR(1, 0, 0, 0);
+    }
 }
 #endif
