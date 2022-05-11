@@ -2,7 +2,7 @@
 	"name": "TKL-FF",
 	"vendorId": "0xB16B",
 	"productId": "0x1124",
-	"lighting": "qmk_rgblight",
+	"lighting": "vialrgb",
 	"matrix": { "rows": 6, "cols": 17 },
 	"layouts": {
 		"keymap":
