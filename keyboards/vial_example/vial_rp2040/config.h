@@ -13,8 +13,8 @@
 #define MATRIX_ROWS 2
 #define MATRIX_COLS 2
 
-#define MATRIX_ROW_PINS { 0, 1 }
-#define MATRIX_COL_PINS { 2, 3 }
+#define MATRIX_ROW_PINS { GP2, GP4 }
+#define MATRIX_COL_PINS { GP3, GP5 }
 
 #define DIODE_DIRECTION COL2ROW
 
@@ -22,6 +22,8 @@
 #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
+<<<<<<< HEAD
 
 /* Use 1000hz polling */
 #define USB_POLLING_INTERVAL_MS 1
+=======
