@@ -1,8 +1,6 @@
-# MCU name
-MCU_FAMILY = PICO
-MCU_SERIES = RP2040
-BOOTLOADER = RP2040
-MCU = cortex-m0plus
+# MCU
+BOOTLOADER = rp2040
+MCU = RP2040
 
 # Build Options
 #   change yes to no to disable
@@ -17,5 +15,7 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no       # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 
+
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = WS2812
+WS2812_DRIVER = vendor

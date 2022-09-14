@@ -40,20 +40,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
-#define MATRIX_ROW_PINS {  2,  3,  4,  5, 15 }
-#define MATRIX_COL_PINS { 28, 27, 26, 25, 24, 23, 22, 20, 19, 18, 17, 16,  0, 14, 12 }
-#define UNUSED_PINS
+#define MATRIX_ROW_PINS { GP2, GP3, GP4, GP5, GP15 }
+#define MATRIX_COL_PINS { GP28, GP27, GP26, GP25, GP24, GP23, GP22, GP20, GP19, GP18, GP17, GP16, GP0, GP14, GP12 }
 
 /* COL2ROW, ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
-/* indicator LEDs */
-#define RGBLIGHT_LAYERS
-#define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
-
-#define RGB_DI_PIN 29
+#define WS2812_PIO_USE_PIO1 // Force the usage of PIO1 peripheral, by default the WS2812 implementation uses the PIO0 peripheral
+#define RGB_DI_PIN GP29
 #ifdef RGB_DI_PIN
 #define DRIVER_LED_TOTAL 1
+#define RGBLED_NUM 1
 
 #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 #define RGB_MATRIX_KEYPRESSES
@@ -78,8 +75,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* define if matrix has ghost (lacks anti-ghosting diodes) */
 //#define MATRIX_HAS_GHOST
-
-
-/* disable these deprecated features by default */
-#define NO_ACTION_MACRO
-#define NO_ACTION_FUNCTION
