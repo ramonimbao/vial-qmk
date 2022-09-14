@@ -23,6 +23,10 @@
 #include "wait.h"
 #include "usb_util.h"
 
+#ifdef PROTOCOL_PICO
+#    include "tusb.h"
+#endif
+
 #ifdef EE_HANDS
 #    include "eeconfig.h"
 #endif
@@ -147,7 +151,8 @@ void split_pre_init(void) {
     if (isLeftHand) {
         rgblight_set_clipping_range(0, num_rgb_leds_split[0]);
     } else {
-        rgblight_set_clipping_range(num_rgb_leds_split[0], num_rgb_leds_split[1]);
+        rgblight_set_clipping_range(num_rgb_leds_split[0],
+                                    num_rgb_leds_split[1]);
     }
 #endif
 
