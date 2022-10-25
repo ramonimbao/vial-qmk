@@ -13,8 +13,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 #pragma once
 
-#define RGBLIGHT_LAYERS
-#define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
+#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+#define RGB_MATRIX_KEYPRESSES
+
+#define VIAL_KEYBOARD_UID {0xA2, 0x3D, 0x39, 0x58, 0x93, 0x97, 0x02, 0x2C}
+
+#define TAPPING_TERM 300
